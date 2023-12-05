@@ -1,0 +1,21 @@
+[project]
+name = "aoc"  # Required
+version = "1.0.0"  # Required
+requires-python = ">=3.7"
+dependencies = [
+  "numpy",
+  "networkx"
+]
+
+[project.optional-dependencies] # Optional
+dev = ["pylint", "black", "isort"]
+
+[build-system]
+requires = ["setuptools>=43.0.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.isort]
+profile = "black"
+
+[tool.pylint.'MESSAGE CONTROL']
+disable=missing-module-docstring,missing-function-docstring,wrong-import-position,unused-import,wildcard-import
