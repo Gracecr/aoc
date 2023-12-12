@@ -2,9 +2,10 @@ from __future__ import annotations
 
 import dataclasses
 import functools
-import operator
 import inspect
 import itertools
+import math
+import operator
 import re
 from collections import ChainMap, Counter, defaultdict, deque
 from collections.abc import Mapping
