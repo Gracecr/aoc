@@ -1,5 +1,9 @@
 from __future__ import annotations
 
+import sys
+
+sys.setrecursionlimit(10000)
+
 import dataclasses
 import functools
 import inspect

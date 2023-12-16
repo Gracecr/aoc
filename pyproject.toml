@@ -17,5 +17,13 @@ build-backend = "setuptools.build_meta"
 [tool.isort]
 profile = "black"
 
-[tool.pylint.'MESSAGE CONTROL']
-disable=missing-module-docstring,missing-function-docstring,wrong-import-position,unused-import,wildcard-import
+[tool.pylint."MESSAGES CONTROL"]
+disable = """missing-module-docstring,
+  missing-function-docstring,
+  wrong-import-position,
+  unused-import,
+  wildcard-import,
+  missing-class-docstring,
+  unused-wildcard-import,
+  invalid-name,
+"""
