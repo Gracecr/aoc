@@ -26,4 +26,5 @@ disable = """missing-module-docstring,
   missing-class-docstring,
   unused-wildcard-import,
   invalid-name,
+  broad-exception-raised,
 """

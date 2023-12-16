@@ -22,20 +22,14 @@ class Direction(Enum):
     RIGHT = (0, 1)
 
 
-mirror_dir_map: dict[str, dict[Direction, Direction]] = {
-    "/": {
-        Direction.UP: Direction.RIGHT,
-        Direction.DOWN: Direction.LEFT,
-        Direction.LEFT: Direction.DOWN,
-        Direction.RIGHT: Direction.UP,
-    },
-    "\\": {
-        Direction.UP: Direction.LEFT,
-        Direction.DOWN: Direction.RIGHT,
-        Direction.LEFT: Direction.UP,
-        Direction.RIGHT: Direction.DOWN,
-    },
-}
+def reflect(direction: Direction, mirror: str):
+    if mirror == "/":
+        return Direction((-direction.value[1], -direction.value[0]))
+
+    if mirror == "\\":
+        return Direction((direction.value[1], direction.value[0]))
+
+    raise Exception(f"Invalid mirror type: '{mirror}'")
 
 
 @dataclasses.dataclass(frozen=True)
@@ -57,24 +51,21 @@ def calc_energized(start_beam: Beam) -> int:
             return
 
         ch = D[b.position[0]][b.position[1]]
-        if (
-            ch == "."
-            or (ch == "|" and b.direction in (Direction.UP, Direction.DOWN))
-            or (ch == "-" and b.direction in (Direction.RIGHT, Direction.LEFT))
-        ):
-            f(Beam(b.direction, addt(b.position, b.direction.value)))
 
-        elif ch in "/\\":
-            new_direction = mirror_dir_map[ch][b.direction]
+        if ch in "/\\":
+            new_direction = reflect(b.direction, ch)
             f(Beam(new_direction, addt(b.position, new_direction.value)))
 
-        elif ch == "|":
+        elif ch == "|" and b.direction in (Direction.LEFT, Direction.RIGHT):
             for direction in (Direction.UP, Direction.DOWN):
                 f(Beam(direction, addt(b.position, direction.value)))
 
-        elif ch == "-":
+        elif ch == "-" and b.direction in (Direction.UP, Direction.DOWN):
             for direction in (Direction.RIGHT, Direction.LEFT):
                 f(Beam(direction, addt(b.position, direction.value)))
+
+        else:
+            f(Beam(b.direction, addt(b.position, b.direction.value)))
 
     f(start_beam)
     return len({b.position for b in V})
