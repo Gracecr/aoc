@@ -28,3 +28,6 @@ disable = """missing-module-docstring,
   invalid-name,
   broad-exception-raised,
 """
+
+[tool.ruff]
+target-version = "py312"
