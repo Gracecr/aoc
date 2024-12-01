@@ -59,7 +59,10 @@ def addt(t1, t2):
     return tuple(t1[i] + t2[i] for i in range(len(t1)))
 
 
-def get_neighbors(pos, vectors, bounds=None):
+def get_neighbors(pos, vectors, bounds=None, wrap=False):
+    if wrap:
+        neighbors = [addt(pos, v) for v in vectors]
+        return [(d % bound for d, bound in zip(n, bounds)) for n in neighbors]
     neighbors = [
         addt(pos, v) for v in vectors if bounds is None or is_in_bounds(bounds, pos)
     ]
