@@ -2,7 +2,7 @@
 
 These are my advent of code solutions. There are many like them, but these are mine.
 
-If you're a potentional employer, This isn't how my code usually looks. I swear!
+If you're a potentional employer, this isn't how my code usually looks. I swear!
 
 ## How to run
 
