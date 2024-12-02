@@ -1,11 +1,6 @@
 from aoc.util import *
 
 D = get_data().splitlines()
-# D = r"""broadcaster -> a
-# %a -> inv, con
-# &inv -> b
-# %b -> con
-# &con -> output""".splitlines()
 
 SPECIAL = ["dl", "vk", "ks", "pm"]
 CYCLES = defaultdict(list)

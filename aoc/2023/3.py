@@ -1,17 +1,6 @@
 from aoc.util import *
 
 D = get_data().splitlines()
-# D = """467..114..
-# ...*......
-# ..35..633.
-# ......#...
-# 617*......
-# .....+.58.
-# ..592.....
-# ......755.
-# ...$.*....
-# .664.598..
-# """.splitlines()
 V = get_vectors(2, diag=True)
 B = get_bounds(D)
 vis = set()
@@ -29,7 +18,7 @@ for row, line in enumerate(D):
                     while end_pos < len(D[n[0]]) and D[n[0]][end_pos].isdigit():
                         end_pos += 1
                     if not D[n[0]][pos].isdigit():
-                        num = D[n[0]][pos + 1:end_pos]
+                        num = D[n[0]][pos + 1 : end_pos]
                     else:
                         num = D[n[0]][pos:end_pos]
                     if (n[0], end_pos) not in vis:

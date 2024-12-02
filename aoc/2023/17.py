@@ -3,11 +3,6 @@ import heapq
 from aoc.util import *
 
 D = get_data().splitlines()
-# D = """111111111111
-# 999999999991
-# 999999999991
-# 999999999991
-# 999999999991""".splitlines()
 
 HMAP = defaultdict(lambda: 0)
 G = nx.Graph()

@@ -1,12 +1,6 @@
 from aoc.util import *
 
 D = get_data().splitlines()
-# D = """???.### 1,1,3
-# .??..??...?##. 1,1,3
-# ?#?#?#?#?#?#?#? 1,3,1,6
-# ????.#...#... 4,1,1
-# ????.######..#####. 1,6,5
-# ?###???????? 3,2,1""".splitlines()
 
 
 @functools.lru_cache
@@ -25,10 +19,11 @@ def backtrack(s: str, groups: tuple[int], prev: str = ""):
     if s[0] == "?":
         return backtrack(s[1:], groups, ".") + backtrack("#" + s[1:], groups, prev)
 
-    if any(char == "." for char in s[:groups[0]]):
+    if any(char == "." for char in s[: groups[0]]):
         return 0
 
-    return backtrack(s[groups[0]:], groups[1:], "#")
+    return backtrack(s[groups[0] :], groups[1:], "#")
+
 
 acc = 0
 acc2 = 0

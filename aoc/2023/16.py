@@ -3,16 +3,6 @@ from enum import Enum
 from aoc.util import *
 
 D = get_data().splitlines()
-# D = r""".|...\....
-# |.-.\.....
-# .....|-...
-# ........|.
-# ..........
-# .........\
-# ..../.\\..
-# .-.-/..|..
-# .|....-|.\
-# ..//.|....""".splitlines()
 
 
 class Direction(Enum):

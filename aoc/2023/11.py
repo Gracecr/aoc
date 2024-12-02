@@ -1,16 +1,6 @@
 from aoc.util import *
 
 D = get_data().splitlines()
-# D = """...#......
-# .......#..
-# #.........
-# ..........
-# ......#...
-# .#........
-# .........#
-# ..........
-# .......#..
-# #...#.....""".splitlines()
 
 
 # EXPAND_RATE = 1
@@ -21,7 +11,7 @@ G = list()
 for r, line in enumerate(D):
     for c, char in enumerate(line):
         if char == "#":
-            G.append((r,c))
+            G.append((r, c))
 print(G)
 
 
@@ -39,7 +29,7 @@ for r, line in enumerate(D):
         G = new_set
 print(G)
 
-#Adjust Column
+# Adjust Column
 num_shifts = -1
 for c, line in enumerate(zip(*D)):
     if "#" not in line:

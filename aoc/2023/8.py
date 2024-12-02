@@ -1,16 +1,6 @@
 from aoc.util import *
 
 D = get_data().splitlines()
-D = """LR
-
-11A = (11B, XXX)
-11B = (XXX, 11Z)
-11Z = (11B, XXX)
-22A = (22B, XXX)
-22B = (22C, 22C)
-22C = (22Z, 22Z)
-22Z = (22B, 22B)
-XXX = (XXX, XXX)""".splitlines()
 G = nx.DiGraph()
 
 nodes = []
@@ -57,7 +47,7 @@ while any(sl == -1 for sl in offsets):
                 cur = list(G.neighbors(cur))[-1]
             cur_nodes[i] = cur
             if (cur, j) in seqs[i]:
-                seqs_[i] = [a[0] for a in seqs[i][seqs[i].index((cur, j)):]]
+                seqs_[i] = [a[0] for a in seqs[i][seqs[i].index((cur, j)) :]]
             else:
                 seqs[i].add((cur, j))
         # print(cur_nodes)

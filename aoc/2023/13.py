@@ -1,21 +1,7 @@
 from aoc.util import *
 
 D = [a.splitlines() for a in get_data().split("\n\n")]
-# D = [
-#     """#.##..##.
-# ..#.##.#.
-# ##......#
-# ##......#
-# ..#.##.#.
-# ..##..##.
-# #.#.##.#.""".splitlines(),
-# """#...##..#
-# #....#..#
-# ..##..###
-# #####.##.
-# #####.##.
-# ..##..###
-# #....#..#""".splitlines()]
+
 
 def is_ref(data: list[str], r):
     for i in range(r):
@@ -24,6 +10,7 @@ def is_ref(data: list[str], r):
         if data[r - i - 1] != data[r + i]:
             return False
     return True
+
 
 cols = 0
 rows = 0
@@ -35,14 +22,13 @@ for pattern in D:
             print("col", c)
             orig_ref_line[0] = c
             break
-    
+
     for r in range(1, len(pattern)):
         if is_ref(pattern, r):
             print("row", r)
             # rows += r
             orig_ref_line[1] = r
             break
-    
 
     found_new_line = False
     for r1, line in enumerate(pattern):
@@ -57,16 +43,16 @@ for pattern in D:
                     cols += c
                     print("new col", c, "mod", (r1, c1))
                     found_new_line = True
-            
+
             for r in range(1, len(new_pattern)):
                 if is_ref(new_pattern, r) and r != orig_ref_line[1]:
                     print("new row", r, "mod", (r1, c1))
                     rows += r
                     found_new_line = True
-            
+
             if found_new_line:
                 break
         if found_new_line:
             break
-    
+
 submit(100 * rows + cols)
