@@ -11,10 +11,10 @@ p1 = 0
 p2 = 0
 for line in D:
     if "|" in line:
-        a, b = line.split("|")
+        a, b = map(int, line.split("|"))
         RULES[a].add(b)
-    if "," in line:
-        pages = line.split(",")
+    elif "," in line:
+        pages = list(map(int, line.split(",")))
         sorted_pages = sorted(
             pages, key=cmp_to_key(lambda a, b: -1 if b in RULES[a] else 1)
         )
