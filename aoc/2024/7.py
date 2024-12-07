@@ -16,6 +16,9 @@ def test(ans: int, values: list[int], ops: list[Callable[[int, int], int]]) -> i
             s = op(s, value)
         if s == ans:
             return ans
+        elif s > ans:
+            # Thanks to @toothlessG22 for the optimization
+            return 0
     return 0
 
 
