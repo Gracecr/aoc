@@ -13,13 +13,12 @@ for line in D:
 
 L1.sort()
 L2.sort()
-ans2 = 0
-ans = 0
+p1 = 0
+p2 = 0
 c = Counter(L2)
 for a, b in zip(L1, L2):
-    ans += a * c[a]
-    ans2 += abs(a - b)
+    p1 += abs(a - b)
+    p2 += a * c[a]
 
-print(ans2)
-print(ans)
-# u.submit(ans)
+print(p1)
+print(p2)
