@@ -7,7 +7,6 @@ D = u.get_data().splitlines()
 B = u.get_bounds(D)
 G = defaultdict(list)
 
-part2 = 0
 for r, line in enumerate(D):
     for c, ch in enumerate(line):
         if ch != ".":
@@ -29,12 +28,11 @@ for ch in G:
         while u.is_in_bounds(B, pos):
             P2_ANTINODES.add(pos)
             pos = u.addt(pos, p1_diff)
+
         pos = p2
         while u.is_in_bounds(B, pos):
             P2_ANTINODES.add(pos)
             pos = u.addt(pos, p2_diff)
 
-part1 = len(P1_ANTINODES)
-part2 = len(P2_ANTINODES)
-print(part1)
-print(part2)
+print(len(P1_ANTINODES))
+print(len(P2_ANTINODES))
