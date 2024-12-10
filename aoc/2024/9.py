@@ -39,9 +39,9 @@ for filled_space in FILLED_SPACES[::-1]:
         free_space.index += filled_space.size
 
 
-for i, space in enumerate(FILLED_SPACES):
-    for j in range(space.size):
-        p2 += (space.index + j) * i
+for id_num, space in enumerate(FILLED_SPACES):
+    for i in range(space.size):
+        p2 += (space.index + i) * id_num
 
 x = 0
 y = len(SPACE) - 1
