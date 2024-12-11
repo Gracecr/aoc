@@ -6,7 +6,7 @@ D = u.get_data()
 STONES = [int(s) for s in D.split()]
 
 
-@functools.lru_cache(maxsize=100000)
+@functools.cache
 def process_stone(stone: int, blinks: int) -> int:
     if blinks == 0:
         return 1
