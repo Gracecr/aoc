@@ -7,7 +7,7 @@ STONES = [int(s) for s in D.split()]
 
 
 @functools.lru_cache(maxsize=100000)
-def proccess_stone(stone: int, blinks: int) -> tuple[int]:
+def proccess_stone(stone: int, blinks: int) -> int:
     if blinks == 0:
         return 1
 
