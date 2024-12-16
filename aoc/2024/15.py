@@ -34,29 +34,31 @@ def print_g():
 # print_g()
 
 
-def can_move_box(box: tuple[tuple[int, int], tuple[int, int]], move: tuple[int, int]):
+def can_move_box(
+    box: tuple[tuple[int, int], tuple[int, int]], move: tuple[int, int]
+) -> None:
     for pos in box:
         new_pos = u.addt(pos, move)
-        if new_pos == box[1]:
-            continue
         new_pos_ch = G[new_pos[0]][new_pos[1]]
-        if new_pos_ch in "[]":
-            if move in {DIR["v"], DIR["^"]}:
-                if not can_move_box(
-                    (
-                        new_pos,
-                        u.addt(DIR["<"], new_pos)
-                        if new_pos_ch == "]"
-                        else u.addt(DIR[">"], new_pos),
-                    ),
-                    move,
-                ):
-                    return False
-            else:
-                if not can_move_box((new_pos, u.addt(move, new_pos)), move):
-                    return False
-        if new_pos_ch in "#":
+        if new_pos_ch == "#":
             return False
+        if new_pos == box[1] or new_pos_ch not in "[]":
+            continue
+
+        if move in {DIR["v"], DIR["^"]}:
+            if not can_move_box(
+                (
+                    new_pos,
+                    u.addt(DIR["<"], new_pos)
+                    if new_pos_ch == "]"
+                    else u.addt(DIR[">"], new_pos),
+                ),
+                move,
+            ):
+                return False
+        elif not can_move_box((new_pos, u.addt(move, new_pos)), move):
+            return False
+
     return True
 
 
