@@ -2,28 +2,19 @@ from functools import cache
 
 from aoc import util as u
 
-D = u.get_data().split("\n\n")
-PATTERNS = set(D[0].split(", "))
+PATTERNS, DESIGNS = u.get_data().split("\n\n")
+PATTERNS = set(PATTERNS.split(", "))
+DESIGNS = DESIGNS.splitlines()
 
 
 @cache
 def num_ways(design: str) -> int:
     if design == "":
         return 1
-    n = 0
-    for pattern in PATTERNS:
-        if design.startswith(pattern):
-            n += num_ways(design[len(pattern) :])
-    return n
+    return sum(num_ways(design[len(p) :]) for p in PATTERNS if design.startswith(p))
 
 
-p1 = 0
-p2 = 0
-for i, design in enumerate(D[1].splitlines()):
-    n = num_ways(design)
-    if n:
-        p1 += 1
-        p2 += n
+n_different_ways = [num_ways(design) for design in DESIGNS]
 
-print(p1)
-print(p2)
+print(sum(1 for n_ways in n_different_ways if n_ways))
+print(sum(n_different_ways))
